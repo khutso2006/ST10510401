@@ -4,13 +4,9 @@
  */
 package chatapp;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.BeforeAll;
 
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
 /**
  *
@@ -23,13 +19,26 @@ public class ChatAppTest {
    
    
     @Test
-    public void testMain(){
+    public void testUserName(){
         Login log = new Login();
         boolean actual = log.checkUserName("Kyl_1");
         boolean expected = true;        
-        assertEquals(expected, actual ,"Expect to be true "); 
+        assertEquals("Expect to be true",expected, actual ); 
         
        
     }
-    
+   @Test
+    public void testpassword(){
+        Login log = new Login();
+        boolean actual = log.checkPassword("Ch&&sec@ke99!");
+        boolean expected = true;        
+        assertEquals("Expect to be true",expected, actual );  
+}
+ @Test
+    public void testcellphonenumber(){
+        Login log = new Login();
+        boolean actual = log.checkCellphone("+27838968976");
+        boolean expected = true;        
+        assertEquals("Expect to be true",expected, actual );    
+}
 }
