@@ -18,11 +18,7 @@ public class Login {
            boolean isLoggedIn = false;
     private final String firstName;
     private final String lastName;
-    private final String username;
-    private final String password;
-    private final String cellphoneNumber;
        
-   
     //userName validation
     public boolean checkUserName(String enteredUsername){
     //password validation
