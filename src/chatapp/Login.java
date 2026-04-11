@@ -9,11 +9,11 @@ package chatapp;
  */
 public class Login {
      
-        private String enteredfirstName;
-        private String enteredlastName;
-        private String enteredusername;
-        private String enteredpassword;
-        private String enteredcellphoneNumber;
+         String enteredfirstName;
+         String enteredlastName;
+         String enteredusername;
+         String enteredpassword;
+         String enteredcellphoneNumber;
        
            boolean isLoggedIn = false;
     private final String firstName;
@@ -34,7 +34,7 @@ public class Login {
    return enteredPassword.matches(passwordvalidation);   
   }
      //cellphone validation
-    public boolean CellphoneNumberIsValidREGEX(String enteredCellphoneNumber){
+    public boolean CellphoneNumber(String enteredCellphoneNumber){
        String cellphoneValidation = "^$|(\\+27)[1-8][0-9]{8}$"; //research
        
             return enteredCellphoneNumber.matches(cellphoneValidation);
@@ -63,7 +63,8 @@ public class Login {
               System.exit(0);
           } 
            System.out.println();
-       return"Registration successful";   
+       return"Registration successful"; 
+       
     }      
      
   public boolean loginUser(String username, String password,String enteredUsername,String enteredPassword) {

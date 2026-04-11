@@ -48,15 +48,15 @@ public class ChatAppTest {
  @Test
     public void testcellphonenumber(){
         Login log = new Login();
-        boolean actual = log.CellphoneNumberIsValidREGEX("+27838968976");
+        boolean actual = log.CellphoneNumber("+27838968976");
         boolean expected = true;        
-        assertEquals("(\"Password is not correctly formatted; please ensure that the password contains at "
+        assertEquals("(Password is not correctly formatted; please ensure that the password contains at "
                 + "least eight characters, a capital letter, a number, and a special character.",expected, actual );    
 }
  @Test   
  public void testcellphonenumberinvaild(){
         Login log = new Login();
-        boolean actual = log.CellphoneNumberIsValidREGEX("08966553");
+        boolean actual = log.CellphoneNumber("08966553");
         boolean expected = false;        
         assertEquals("Expect to be true",expected, actual );       
     

@@ -50,7 +50,7 @@ public class ChatApp {
         System.out.print("please enter South African cellphone number:");
        cellphoneNumber = scn.nextLine();
        //calling the method of cellphone number
-       if(login.CellphoneNumberIsValidREGEX(cellphoneNumber)){
+       if(login.CellphoneNumber(cellphoneNumber)){
            System.out.println("cellphone number is succefully added");   
        }else{
           System.out.println("cellphone number is incorrectly formatted or does not contain international code ");
