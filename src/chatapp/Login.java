@@ -25,46 +25,47 @@ public class Login {
        
     //userName validation
     public boolean checkUserName(String enteredUsername){
-    
-            //password validation
-            return(enteredUsername.contains("_") && enteredUsername.length() <=5);
-            
-   
+    //password validation
+       return(enteredUsername.contains("_") && enteredUsername.length() <=5);
     }
-  public boolean checkPassword(String enteredPassword){ 
-      String passwordValidation =( "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{8,}$");
-      
-  
+    //password validation
+  public boolean checkPasswordREGEX(String enteredPassword){ 
+      String passwordValidation = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&!+=]).{8,})";//Youtubw
    return enteredPassword.matches(passwordValidation);   
-  
-   //cellphone validation
   }
-     
-     
-    public boolean checkCellphone(String enteredCellphoneNumber){
-       String cellphoneValidation = "^(\\+27)[6-8][0-9]{1}[- ]?[0-9]{3}[- ]?[0-9]{4}$"; 
+     //cellphone validation
+    public boolean CellphoneNumberIsValidREGEX(String enteredCellphoneNumber){
+       String cellphoneValidation = "^$|(\\+27)[1-8][0-9]{8}$"; //research
        
             return enteredCellphoneNumber.matches(cellphoneValidation);
         }
-    
-     
-       public String  checkregisterUser(String enteredUsername ,String enteredpassword){
+    //checking if ever the entered username martches with validation password
+    public String  checkregisterUser(String enteredUsername ,String enteredpassword){
+           boolean isCorrect = true;
       if(!checkUserName(enteredUsername)){
-            System.out.println( "Username is incorrectly formated");
-        
-      }
-       if(!checkPassword(enteredpassword)){   
-             System.out.println("password does not meet complexity"); 
+            System.out.println("Username is incorrectly formated");
+          isCorrect = false;
           
-       }
-       else{
-             System.out.println ("the two above conditions have been met,and the user have been registered successfuly");
-       }
-      
-       return"";
-       }
-       
-            
+            //stop executing to login
+      }
+      //checking if ever the entered password martches with validation password
+       if(!checkPasswordREGEX(enteredpassword)){   
+             System.out.println("password does not meet complexity"); 
+          isCorrect = false;
+          
+           //stop executing to login
+            }
+          if(isCorrect ){
+               System.out.println("the two above conditions have been met,and the user have been registered successfuly");
+             //stop executing to login
+          }else{
+             System.out.println("Registration unsuccessful");
+              System.exit(0);
+          } 
+           System.out.println();
+       return"Registration successful";   
+    }      
+     
   public boolean loginUser(String username, String password,String enteredUsername,String enteredPassword) {
         // Compare entered details with stored ones
         if (username.equals(enteredUsername) && password.equals(enteredPassword)){
@@ -77,7 +78,7 @@ public class Login {
     public String returnLoginStatus(boolean loginSuccess) {
 
         if (loginSuccess) {
-            return "Welcome " + firstName + " " + lastName + ", it is great to see you again!";
+            return "Welcome "+ firstName + " " + lastName + ", it is great to see you again!";
         } else {
             return "Username or password incorrect, please try again.";
         

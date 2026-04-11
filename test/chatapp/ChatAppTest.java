@@ -30,14 +30,14 @@ public class ChatAppTest {
    @Test
     public void testpassword(){
         Login log = new Login();
-        boolean actual = log.checkPassword("Ch&&sec@ke99!");
+        boolean actual = log.checkPasswordREGEX("Ch&&sec@ke99!");
         boolean expected = true;        
         assertEquals("Expect to be true",expected, actual );  
 }
  @Test
     public void testcellphonenumber(){
         Login log = new Login();
-        boolean actual = log.checkCellphone("+27838968976");
+        boolean actual = log.CellphoneNumberIsValidREGEX("+27838968976");
         boolean expected = true;        
         assertEquals("Expect to be true",expected, actual );    
 }
