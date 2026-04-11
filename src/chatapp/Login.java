@@ -67,13 +67,15 @@ public class Login {
        
     }      
      
-  public boolean loginUser(String username, String password,String enteredUsername,String enteredPassword) {
-        // Compare entered details with stored ones
-        if (username.equals(enteredUsername) && password.equals(enteredPassword)){
-        return true;
-      }else{
-       return false;
-    }
+  public boolean loginUser(String username) {
+            //Compare entered details with stored ones
+    // Compare entered details with stored ones
+            // if (username.equals(enteredusername) && password.equals(enteredpassword)){
+        //return true;
+     // }else{ 
+       //return false;        
+            return username.equals(enteredusername) && password.equals(enteredpassword);
+            
   }
     // METHOD: Return login status message
     public String returnLoginStatus(boolean loginSuccess) {

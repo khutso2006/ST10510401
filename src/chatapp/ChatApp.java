@@ -71,7 +71,7 @@ public class ChatApp {
          System.out.println("Enter password");
          String enteredPassword = scn.nextLine();
         
-        boolean loginUser = login.loginUser( username,password , enteredUsername,enteredPassword);
+        boolean loginUser = login.loginUser(username);
         
               if(loginUser){
                   System.out.println("Login successful!");
