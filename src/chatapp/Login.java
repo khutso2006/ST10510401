@@ -9,11 +9,11 @@ package chatapp;
  */
 public class Login {
      
-         String enteredfirstName;
-         String enteredlastName;
-         String enteredusername;
-         String enteredpassword;
-         String enteredcellphoneNumber;
+        private String enteredfirstName;
+        private String enteredlastName;
+        private String enteredusername;
+        private String enteredpassword;
+        private String enteredcellphoneNumber;
        
            boolean isLoggedIn = false;
     private final String firstName;
@@ -89,7 +89,7 @@ public class Login {
    //constractor 
    public Login(){
         this.firstName = enteredfirstName;
-        this.lastName = enteredlastName;
+        this.lastName= enteredlastName;
         this.username = enteredusername;
         this.password = enteredpassword;
         this.cellphoneNumber = enteredcellphoneNumber;
