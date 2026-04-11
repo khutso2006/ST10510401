@@ -40,7 +40,7 @@ public class ChatApp {
         System.out.print("please enter passWord:");
        password = scn.nextLine();
        
-       if(login.checkPasswordREGEX(password)){
+       if(login.checkPasswordComplexity(password)){
            System.out.println("password is succefully captured");
        }else{
            System.out.println("Password is not correctly formated,ensure that password contains at least 8 characteres "

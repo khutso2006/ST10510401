@@ -24,8 +24,8 @@ public class ChatAppTest {
         Login log = new Login();
         boolean actual = log.checkUserName("Kyl!!!!!");
         boolean expected = false;        
-        assertEquals("Password is not correctly formatted; please ensure that the password"
-                + " contains at least eight characters, a capital letter, a number, and a special character.",expected, actual ); 
+        assertEquals("Username is not correctly formatted; please"
+                + " ensure that your username contains an underscore and is no more than five characters in length.",expected, actual ); 
         
     
     }
@@ -33,7 +33,7 @@ public class ChatAppTest {
    @Test
     public void testpassword(){
         Login log = new Login();
-        boolean actual = log.checkPasswordREGEX("Ch&&sec@ke99!");
+        boolean actual = log.checkPasswordComplexity("Ch&&sec@ke99!");
         boolean expected = true;        
         assertEquals("Expect to be true",expected, actual );  
         
@@ -41,16 +41,17 @@ public class ChatAppTest {
         @Test
     public void testpasswordinvalid(){
         Login log = new Login();
-        boolean actual = log.checkPasswordREGEX("password");
+        boolean actual = log.checkPasswordComplexity("password");
         boolean expected = false;        
-        assertEquals("Expect to be true",expected, actual );  
+        assertEquals("Password successfully captured",expected, actual );  
 }
  @Test
     public void testcellphonenumber(){
         Login log = new Login();
         boolean actual = log.CellphoneNumberIsValidREGEX("+27838968976");
         boolean expected = true;        
-        assertEquals("Expect to be true",expected, actual );    
+        assertEquals("(\"Password is not correctly formatted; please ensure that the password contains at "
+                + "least eight characters, a capital letter, a number, and a special character.",expected, actual );    
 }
  @Test   
  public void testcellphonenumberinvaild(){

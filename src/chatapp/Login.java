@@ -15,23 +15,23 @@ public class Login {
         private String enteredpassword;
         private String enteredcellphoneNumber;
        
-        
-      boolean isLoggedIn = false;
+           boolean isLoggedIn = false;
     private final String firstName;
     private final String lastName;
     private final String username;
     private final String password;
     private final String cellphoneNumber;
        
+   
     //userName validation
     public boolean checkUserName(String enteredUsername){
     //password validation
        return(enteredUsername.contains("_") && enteredUsername.length() <=5);
     }
     //password validation
-  public boolean checkPasswordREGEX(String enteredPassword){ 
-      String passwordValidation = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&!+=]).{8,})";//Youtubw
-   return enteredPassword.matches(passwordValidation);   
+  public boolean checkPasswordComplexity(String enteredPassword){ 
+      String passwordvalidation = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&!+=]).{8,})";//Youtubw
+   return enteredPassword.matches(passwordvalidation);   
   }
      //cellphone validation
     public boolean CellphoneNumberIsValidREGEX(String enteredCellphoneNumber){
@@ -49,7 +49,7 @@ public class Login {
             //stop executing to login
       }
       //checking if ever the entered password martches with validation password
-       if(!checkPasswordREGEX(enteredpassword)){   
+       if(!checkPasswordComplexity(enteredpassword)){   
              System.out.println("password does not meet complexity"); 
           isCorrect = false;
           
