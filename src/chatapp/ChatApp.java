@@ -37,8 +37,8 @@ public class ChatApp {
        if(login.checkUserName(username)){
            System.out.println("Username is succefully captured");
        }else{
-           System.out.println("UserName is not correctly formatted, please ensure that user name" 
-              + "contains an under score and no more than five characters in length ");
+           System.out.println("UserName is not correctly formatted, please ensure that username" 
+              + " contains an under score and no more than five characters in length ");
        }
        //calling the method of password
         System.out.print("please enter passWord:");
