@@ -62,25 +62,7 @@ public class Message {
      * Stores the message details in a JSON-formatted text file (Database).
      * Saves both "Sent" and "Stored" messages with all their details.
      */
-    public void storeMessages(String status) {
-        String jsonEntry = "{\n" +
-                "  \"status\": \"" + status + "\",\n" +
-                "  \"messageID\": \"" + messageID + "\",\n" +
-                "  \"recipient\": \"" + recipient + "\",\n" +
-                "  \"messageContent\": \"" + messageContent + "\",\n" +
-                "  \"messageHash\": \"" + messageHash + "\",\n" +
-                "  \"timestamp\": \"" + new java.util.Date() + "\"\n" +
-                "},\n";
-        
-        try (FileWriter file = new FileWriter("messages_db.json", true)) {
-            file.write(jsonEntry);
-        } catch (IOException e) {
-            System.err.println("Database Error: " + e.getMessage());
-            System.out.println(new File("messages.json").getAbsolutePath());
-        }
-        
-    }
-
+   
     public String printMessages() {
         return "Message ID: " + messageID + "\n" +
                "Message Hash: " + messageHash + "\n" +
