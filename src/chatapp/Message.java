@@ -8,11 +8,7 @@ import java.util.Random;
  * The Message class manages the message details, validation, and hashing.
  */
     // Attributes
- import java.io.FileWriter;
-import java.io.IOException;
-import java.util.Random;
-
-/**
+ /**
  * The Message class manages message details and JSON database storage.
  */
 public class Message {
