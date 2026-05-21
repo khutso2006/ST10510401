@@ -178,29 +178,6 @@ public class ChatApp {
             Message message = new Message(msgID, recipient, content);
             message.createMessageHash();
 
-            if (opt.equals("1")) {
-                // Increment count
-                Message.incrementTotalMessages();
-                
-                // 3. Requirement: Display "Message successfully sent"
-                System.out.println("Message successfully sent");
-                
-                // 4. Requirement: Display Message Details (ID, Hash, Recipient, Message only)
-                System.out.println("\n--- Message Details ---");
-                System.out.println(message.printMessages());
-                
-                // 5. Requirement: Display Total number messages sent
-                System.out.println("Total number messages sent: " + Message.returnTotalMessages());
-                
-                // Save to JSON Database
-                message.storeMessages(cellStatus);
-                
-            } else if (opt.equals("2")) {
-                System.out.println("Press 0 to delete the message");
-            } else if (opt.equals("3")) {
-                message.storeMessages("STORED");
-                System.out.println("Message successfully stored in JSON Database");
-            }
         }
-    }
+        }
 }
