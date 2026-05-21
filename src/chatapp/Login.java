@@ -48,7 +48,7 @@ public class Login {
           
              
         }
-    //checking if ever the entered username martches with validation user
+    //checking if ever the entered username martches with validation username
     public String  checkregisterUser(String enteredUsername ,String enteredpassword){
            boolean isCorrect = true;
       if(!checkUserName(enteredUsername)){

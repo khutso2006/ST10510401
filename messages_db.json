@@ -1,0 +1,112 @@
+{
+  "status": "STORED",
+  "messageID": "2366015005",
+  "recipient": "+27761762293",
+  "messageContent": "i love mee",
+  "messageHash": "23:1:MEE",
+  "timestamp": "Wed May 20 22:20:08 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "8917748911",
+  "recipient": "+27761762293",
+  "messageContent": "i miis mee",
+  "messageHash": "89:1:MEE",
+  "timestamp": "Wed May 20 22:20:42 SAST 2026"
+},
+{
+  "status": "SENT",
+  "messageID": "8596844062",
+  "recipient": "+27761762293",
+  "messageContent": "I LOVE you",
+  "messageHash": "85:1:YOU",
+  "timestamp": "Wed May 20 22:22:30 SAST 2026"
+},
+{
+  "status": "SENT",
+  "messageID": "5564451730",
+  "recipient": "+27761762293",
+  "messageContent": "i am khutso",
+  "messageHash": "55:1:KHUTSO",
+  "timestamp": "Wed May 20 23:14:28 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "8424412548",
+  "recipient": "+27765932856",
+  "messageContent": "i love playing",
+  "messageHash": "84:2:PLAYING",
+  "timestamp": "Wed May 20 23:15:23 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "5999682261",
+  "recipient": "+27761762293",
+  "messageContent": "i miss us",
+  "messageHash": "59:1:US",
+  "timestamp": "Wed May 20 23:49:01 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "2894482551",
+  "recipient": "+27761762293",
+  "messageContent": "ycxjc",
+  "messageHash": "28:1:YCXJC",
+  "timestamp": "Wed May 20 23:49:26 SAST 2026"
+},
+{
+  "status": "SENT",
+  "messageID": "3398637826",
+  "recipient": "+27792124009",
+  "messageContent": "hey baby",
+  "messageHash": "33:1:BABY",
+  "timestamp": "Thu May 21 08:48:26 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "9595845074",
+  "recipient": "+27792124009",
+  "messageContent": "hey ",
+  "messageHash": "95:2:HEY",
+  "timestamp": "Thu May 21 08:49:20 SAST 2026"
+},
+{
+  "status": "SENT",
+  "messageID": "9533943868",
+  "recipient": "+27792124009",
+  "messageContent": "nheruio",
+  "messageHash": "95:2:NHERUIO",
+  "timestamp": "Thu May 21 08:50:38 SAST 2026"
+},
+{
+  "status": "SENT",
+  "messageID": "1424211208",
+  "recipient": "+27761762293",
+  "messageContent": "i miss you",
+  "messageHash": "14:1:YOUYOU",
+  "timestamp": "Thu May 21 09:09:29 SAST 2026"
+},
+{
+  "status": "SENT",
+  "messageID": "5130306338",
+  "recipient": "+27761762293",
+  "messageContent": "i loove you",
+  "messageHash": "51:1:IYOU",
+  "timestamp": "Thu May 21 11:50:50 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "2884934030",
+  "recipient": "+27761762293",
+  "messageContent": "i love you",
+  "messageHash": "28:1:IYOU",
+  "timestamp": "Thu May 21 12:16:58 SAST 2026"
+},
+{
+  "status": "STORED",
+  "messageID": "5079667127",
+  "recipient": "+27761762293",
+  "messageContent": "i liove you",
+  "messageHash": "50:1:IYOU",
+  "timestamp": "Thu May 21 12:23:54 SAST 2026"
+},

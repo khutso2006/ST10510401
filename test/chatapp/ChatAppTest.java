@@ -33,7 +33,7 @@ public class ChatAppTest {
    boolean existent = login.checkPasswordComplexity("Ch&&sec@ke99!");
         boolean expected = true;        
      assertEquals("Password is successfuly captured",expected,existent);  
-     System.out.println("Username successfully captured");
+     System.out.println("password successfully captured");
 
    }  
     
@@ -80,11 +80,11 @@ public class ChatAppTest {
     }
     @Test
     public void testLoginUser_invalid() {
-        Login myobject = new Login();
+        Login login = new Login();
         String username ="kyl_1";
         String password = "Ch&&sec@ke99!";
         String incorrectPassword= "password";
-        boolean result = myobject.loginUser(username, password, username, incorrectPassword);
+        boolean result = login.loginUser(username, password, username, incorrectPassword);
         assertFalse(result); 
         System.out.println("false");
 
