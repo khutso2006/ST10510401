@@ -18,14 +18,7 @@ public class ChatApp {
        String username;
        String password;
        String cellphoneNumber;
-       int option;
-       int maxMessage;
-       String sentMessage;
-       String messageID ;
-       int recentMessege;
-       int numMessages=0;
-       String Recipient;
-       String hash;
+      
        
        //Scanner
      Scanner scn = new Scanner(System.in);

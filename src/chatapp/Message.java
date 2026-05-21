@@ -30,7 +30,22 @@ public class Message {
     }
 
     // Getters and Setters
-    
+    public String getMessageID() { return messageID; }
+    public void setMessageID(String messageID) { this.messageID = messageID; }
+    public String getRecipient() { return recipient; }
+    public void setRecipient(String recipient) { this.recipient = recipient; }
+    public String getMessageContent() { return messageContent; }
+    public void setMessageContent(String messageContent) { this.messageContent = messageContent; }
+    public String getMessageHash() { return messageHash; }
+
+    public String checkRecipientCell(String recipient) {
+        if (recipient.startsWith("+") && recipient.length() >= 3 && recipient.length() <= 13) {
+            return "cellphone number successfully captured";
+        } else {
+            return "Cell phone number is incorrectly formatted or does not contain an international code. Please correct the number and try again.";
+        }
+    }
+
     public String createMessageHash() {
         String firstTwo = messageID.substring(0, Math.min(messageID.length(), 2));
         String[] words = messageContent.trim().split("\\s+");
