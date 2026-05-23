@@ -1,86 +1,88 @@
-package ChatApp;
+package Chatapp;
 
+import chatapp.ChatApp
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-public class MessageClassTest {
+public class MessageTest {
 
-    public MessageClassTest() {
+    public MessageTest() {
     }
 
+     @Test
+    public void testMessageCreation() {
+       Message msg = new Message("1234567890", "+27123456789", "Hello world");
+
+        assertEquals("1234567890", msg.getMessageID());
+        assertEquals("+27123456789", msg.getRecipient());
+        assertEquals("Hello world", msg.getMessageContent());
+    }
+
+    // Test valid recipient
     @Test
-    public void testMessageLength_Success() {
-       ChatApp app = new ChatApp();("MSG001", 0, "+27718693002", "Hi Mike, can you join us for", "");
-        String result = testMessage.checkMessageLength();
-        assertEquals("Message ready to send.", result);
+    public void testValidRecipient() {
+       Message msg = new Message("1234567890", "+27831234567", "Test message");
+
+        String result = msg.checkRecipientCell("+27831234567");
+
+        assertEquals("cellphone number successfully captured", result);
     }
 
+    // Test invalid recipient
     @Test
-    public void testMessageLength_Failure() {
-        String longText = "a".repeat(255);
-        MessageClass testMessage = new MessageClass("MSG001", 0, "+27718693002", longText, "");
-        String result = testMessage.checkMessageLength();
-        assertEquals("Message exceeds 250 characters by 5;please reduce the size.", result);
+    public void testInvalidRecipient() {
+        Message msg = new Message("1234567890", "0831234567", "Test message");
+
+        String result = msg.checkRecipientCell("0831234567");
+
+        assertTrue(result.contains("incorrectly formatted"));
     }
 
+    // Test message hash creation
     @Test
-    public void testRecipientCell_Successes() {
-        MessageClass testMessage = new MessageClass("MSG001", 1, "+27718693002",
-                "Hello", "Select Send");
-        String result = testMessage.checkRecipientCell();
-        assertEquals("Cell phone number successfully captured.", result);
+    public void testCreateMessageHash() {
+        Message msg = new Message("12ABC", "+27831234567", "Hello Chat App");
+
+        String hash = msg.createMessageHash();
+
+        // Expected: first 2 chars + count + first word + last word
+        assertTrue(hash.startsWith("12:"));
+        assertTrue(hash.contains("HELLO"));
+        assertTrue(hash.contains("APP"));
     }
 
+    // Test total messages counter
     @Test
-    public void testRecipientCell_Failure() {
-        MessageClass testMessage = new MessageClass("MSG001", 0, "08575975889",
-                "Hello", "Select Send");
-        String result = testMessage.checkRecipientCell();
-        assertEquals("cell phone number incorrectly formatted or does not contain international code.Please correct the number or try again", result);
+    public void testMessageCounter() {
+        int before = Message.returnTotalMessages();
 
+        Message.incrementTotalMessages();
+        Message.incrementTotalMessages();
+
+        int after = Message.returnTotalMessages();
+
+        assertEquals(before + 2, after);
     }
 
+    // Test random ID generation
     @Test
-    public void testMessagSent_Option1_SendMessage() {
-        MessageClass testMessage = new MessageClass("MSG001", 1, "+27718693002", "Hi Mike, can you join us for"
-                + "dinner tonight?", "Select Send");
-        String result = testMessage.SentMessage(1);
-        assertEquals("Message successfully sent", result);
+    public void testGenerateRandomID() {
+        String id = Message.generateRandomID();
+
+        assertEquals(10, id.length());
+        assertTrue(id.matches("\\d{10}")); // must be 10 digits
     }
 
+    // Test printMessages method
     @Test
-    public void testMessagSent_Option0_SendMessage() {
-        MessageClass testMessage = new MessageClass("MSG001", 1, "+27718693002", "Hi Mike, can you join us for"
-                + "dinner tonight?", "Select Send");
+    public void testPrintMessages() {
+        Message msg = new Message("1234567890", "+27831234567", "Hello world");
+        msg.createMessageHash();
 
-        String result = testMessage.SentMessage(0);
-        assertEquals("Press 0 to delete the message.", result);
+        String output = msg.printMessages();
+
+        assertTrue(output.contains("Message ID: 1234567890"));
+        assertTrue(output.contains("Recipient: +27831234567"));
+        assertTrue(output.contains("Hello world"));
     }
-
-    @Test
-    public void testMessagSent_Option2_SendMessage() {
-        Message messageTest = new Message("MSG001", 1, "+27718693002", "Hi Mike, can you join us for"
-                + "dinner tonight?", "Select Send");
-
-        String result = messageTest.SentMessage(2);
-        assertEquals("Message successfully stored", result);
-    }
-
-
-
-    @Test
-    public void MessageHash() {
-        Message testMessage = new Message("MSG001", 1, "+27718693002", "Hi Mike, can you join us for"
-                + "dinner tonight?", "Select Send");
-        String hash = testMessage.createMessageHash();
-        assertNotNull("00:0:HITONIGHT", hash);
-
-    }
-    @Test
-    public void testReturnTotalMessages_Count() {
-
-        Message messageTest = new Message("MSG001", 2, "+27718693002", "Hi Mike, can you join us for "
-                + "dinner tonight?", "Select Send");
-        assertEquals(2, messageTest.returnTotalMessages());
-
-    }
+}
