@@ -1,6 +1,5 @@
 package ChatApp;
 
-import chatapp.ChatApp;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -11,8 +10,8 @@ public class MessageClassTest {
 
     @Test
     public void testMessageLength_Success() {
-       ChatApp app = new ChatApp();
-        String result = app
+       ChatApp app = new ChatApp();("MSG001", 0, "+27718693002", "Hi Mike, can you join us for", "");
+        String result = testMessage.checkMessageLength();
         assertEquals("Message ready to send.", result);
     }
 
