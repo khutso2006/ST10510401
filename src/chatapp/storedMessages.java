@@ -148,4 +148,77 @@ private void writeMessage(FileWriter file, Message m, String status) throws IOEx
 
     // d. SEARCH BY RECIPIENT
         // d. SEARCH BY RECIPIPIENT
+    public void searchByRecipient(String rec) {
+        boolean found = false;
+        
+        for (Message m : storedMessages) {
+            if (m.getRecipient().equalsIgnoreCase(rec)) {
+                System.out.println("Message: " + m.getMessageContent());
+                found = true;
+            }
+        }
+        
+        if (!found) {
+            System.out.println("No messages found for this recipient.");
+        }
+    }
+
+    // e. DELETE USING HASH
+     
+   public void deleteByHash(String hash) {
+
+    hash = hash.trim();   
+
+    System.out.println("INPUT: [" + hash + "]");
+    boolean found = false;
+
+    for (int i = 0; i < storedMessages.size(); i++) {
+
+        String storedHash = storedMessages.get(i).getMessageHash().trim();
+
+        System.out.println("STORED: [" + storedHash + "]");
+
+        if (storedHash.equalsIgnoreCase(hash)) {
+            storedMessages.remove(i);
+            System.out.println("Deleted successfully.");
+            found = true;
+            break;
+        }
+    }
+
+    if (!found) {
+        System.out.println("Hash not found.");
+    }
+}
+    //
+       // f. FULL REPORT
+  public void displayFullReport() {
+
+    if (storedMessages.isEmpty()) {
+        System.out.println("No stored messages.");
+        return;
+    }
+
+    System.out.println("\n--- Message Report ---");
+
+    for (Message m : storedMessages) {
+
+        System.out.println("Hash: " + m.getMessageHash());
+        System.out.println("Recipient: " + m.getRecipient());
+        System.out.println("Message: " + m.getMessageContent());
+        System.out.println("----------------------------");
+    }
+}
+    public void displaySentMessages() {
+    for (Message m : sentMessages) {
+        System.out.println("Sent " + m.getRecipient() + ": " + m.getMessageContent());
+    }
+}
+    public void displayDiscardedMessages() {
+    for (Message m : discardedMessages) {
+        System.out.println("Discarded -> " + m.getMessageContent());
+    }
+}
+  
     
+
