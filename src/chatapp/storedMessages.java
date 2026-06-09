@@ -219,6 +219,30 @@ private void writeMessage(FileWriter file, Message m, String status) throws IOEx
         System.out.println("Discarded -> " + m.getMessageContent());
     }
 }
-  
+    public void displayCounts() {
+    System.out.println("Stored: " + storedMessages.size());
+    System.out.println("Sent: " + sentMessages.size());
+    System.out.println("Discarded: " + discardedMessages.size());
+}
+    
+
+   public void displayRecentSentMessages() {
+       
+       
+
+    if (sentMessages.isEmpty()) {
+        System.out.println("No sent messages.");
+        return;
+    }
+
+    Message m = sentMessages.get(sentMessages.size() - 1);
+
+    System.out.println("\n--- Most Recent Sent Message ---");
+    System.out.println("Recipient: " + m.getRecipient());
+    System.out.println("Message: " + m.getMessageContent());
+}
+}
+
+
     
 
