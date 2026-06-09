@@ -165,7 +165,48 @@ public class ChatApp {
         System.out.print("Select option: ");
          choice = scanner.nextLine();
 
-      }
+        switch (choice) {
+
+            case "1":
+                sm.displayStoredmessage();
+                break;
+
+            case "2":
+                sm.displayLongestMessage();
+                break;
+
+            case "3":
+                System.out.print("Enter ID: ");
+                sm.searchByMessageID(scanner.nextLine());
+                break;
+
+            case "4":
+                System.out.print("Enter recipient: ");
+                sm.searchByRecipient(scanner.nextLine());
+                break;
+
+            case "5":
+                 System.out.print("Enter hash: ");
+                 String hash = scanner.nextLine();
+                 sm.deleteByHash(hash);
+
+    
+                break;
+
+            case "6":
+                sm.displayFullReport();
+                break;
+
+            case "7":
+                System.out.println("Returning to main menu...");
+                break;
+
+            default:
+                System.out.println("Invalid option.");
+        }
+
+    } while (!choice.equals("7"));
+}
  
     private static void SendMessages() { 
         
