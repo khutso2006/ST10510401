@@ -58,7 +58,7 @@ discardedMessages.clear();
     storedMessages.add(message);
 
 } else if (status.equalsIgnoreCase("SENT")) {
-    sentMessages.add(message);   // 🔥 THIS LINE IS CRITICAL
+    sentMessages.add(message);   // 
 
 } else if (status.equalsIgnoreCase("DISCARDED")) {
     discardedMessages.add(message);
@@ -119,4 +119,33 @@ private void writeMessage(FileWriter file, Message m, String status) throws IOEx
     }
 }
     // b. LONGEST MESSAGE
-  
+   public void displayLongestMessage() {
+
+    Message longest = null;
+
+    for (Message m : storedMessages) {
+        if (longest == null || m.getMessageContent().length() > longest.getMessageContent().length()) {
+            longest = m;
+        }
+    }
+
+    if (longest != null)
+        System.out.println("Longest: " + longest.getMessageContent());
+}
+    // c. SEARCH BY MESSAGE ID
+        // c. SEARCH BY MESSAGE ID
+    public void searchByMessageID(String id) {
+        for (Message m : storedMessages) {
+            if (m.getMessageID().equals(id)) {
+                System.out.println("ID: " + m.getMessageID());
+                System.out.println("Recipient: " + m.getRecipient());
+                System.out.println("Message: " + m.getMessageContent());
+                return;
+            }
+        }
+        System.out.println("Message ID not found.");
+    }
+
+    // d. SEARCH BY RECIPIENT
+        // d. SEARCH BY RECIPIPIENT
+    
