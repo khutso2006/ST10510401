@@ -111,4 +111,12 @@ private void writeMessage(FileWriter file, Message m, String status) throws IOEx
 }
 
     // a. DISPLAY SENDER + RECIPIENT
-   
+    public void displayStoredmessage() {
+    for (Message m : storedMessages) {
+        System.out.println("Sender: Quick chartApp user " );
+         System.out.println("Message: " + m.getMessageContent());
+         System.out.println("Recipient: " + m.getRecipient());
+    }
+}
+    // b. LONGEST MESSAGE
+  
