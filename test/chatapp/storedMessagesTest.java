@@ -8,9 +8,6 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
-
 public class storedMessagesTest {
 
     storedMessages sm;
@@ -19,124 +16,124 @@ public class storedMessagesTest {
     public void setUp() {
         sm = new storedMessages();
 
+        
         storedMessages.storedMessages.clear();
         storedMessages.sentMessages.clear();
         storedMessages.discardedMessages.clear();
+
+                       Message m1 = new Message("M001", "+27834557896", "Did you get the cake?", "Hash1");
+        storedMessages.sentMessages.add(m1);
+
+               Message m2 = new Message("M002", "+27838884567", "Where are you? You are late! I have asked you to be on time.", "Test Message 2");
+        storedMessages.storedMessages.add(m2);
+
+        
+        Message m3 = new Message("M003", "+27834484567", "Yohoooo, I am at your gate.", "Hash3");
+        storedMessages.discardedMessages.add(m3);
+
+                Message m4 = new Message("0838884567", "", "It is dinner time !", "Hash4");
+        storedMessages.sentMessages.add(m4);
+
+                Message m5 = new Message("M005", "+27838884567", "Ok, I am leaving without you.", "Hash5");
+        storedMessages.storedMessages.add(m5);
     }
 
-    // ✅ LOAD JSON (basic test)
+    
     @Test
     public void testLoadMessages() {
         storedMessages.loadMessagesFromJSON();
         assertNotNull(storedMessages.storedMessages);
     }
 
-    // ✅ DISPLAY SENDERS + RECIPIENTS
+    
     @Test
     public void testDisplaySendersAndRecipients() {
-        Message m = new Message("1", "Bob", "Hello", "11:1:HELLO");
-        storedMessages.storedMessages.add(m);
-
-        sm.displayStoredmessage(); // just ensure no crash
-        assertEquals(1, storedMessages.storedMessages.size());
-    }
-
-    // ✅ LONGEST MESSAGE
-    @Test
-    public void testDisplayLongestMessage() {
-        Message m1 = new Message("1", "A", "Short", "1:1:SHORT");
-        Message m2 = new Message("2", "B", "This is longer", "2:2:LONG");
-
-        storedMessages.storedMessages.add(m1);
-        storedMessages.storedMessages.add(m2);
-
-        sm.displayLongestMessage(); // ensure runs
+        sm.displayStoredmessage(); 
+        // Verifying that the two "Stored" messages (Message 2 and Message 5) exist
         assertEquals(2, storedMessages.storedMessages.size());
     }
 
-    // ✅ SEARCH BY MESSAGE ID
+    
     @Test
+    public void testDisplayLongestMessage() {
+        sm.displayLongestMessage();
+        
+        // Verifying that Message 2 is identifiable as the longest entry
+        String expectedLongest = "Where are you? You are late! I have asked you to be on time.";
+        assertEquals(expectedLongest, storedMessages.storedMessages.get(0).getMessageContent());
+    }
+
+       @Test
     public void testSearchByMessageID() {
-        Message m = new Message("123", "John", "Hi", "12:1:HI");
-        storedMessages.storedMessages.add(m);
-
-        sm.searchByMessageID("123");
-        assertEquals("123", storedMessages.storedMessages.get(0).getMessageID());
+        sm.searchByMessageID("0838884567");
+        
+        Message found = null;
+        for (Message m : storedMessages.sentMessages) {
+            if (m.getMessageID().equals("0838884567")) {
+                found = m;
+            }
+        }
+        
+        assertNotNull(found);
+        assertEquals("It is dinner time !", found.getMessageContent());
     }
 
-    // ✅ SEARCH BY RECIPIENT
-    @Test
+        @Test
     public void testSearchByRecipient() {
-        Message m = new Message("123", "Alice", "Hello", "12:1:HELLO");
-        storedMessages.storedMessages.add(m);
-
-        sm.searchByRecipient("Alice");
-        assertEquals("Alice", storedMessages.storedMessages.get(0).getRecipient());
+        sm.searchByRecipient("+27838884567");
+        
+        // Verify that the recipient matches our specific test records
+        assertEquals("+27838884567", storedMessages.storedMessages.get(0).getRecipient());
+        assertEquals("+27838884567", storedMessages.storedMessages.get(1).getRecipient());
     }
 
-    // ✅ DELETE BY HASH
+   
     @Test
     public void testDeleteByHash() {
-        Message m = new Message("123", "Bob", "Test", "12:1:TEST");
-        storedMessages.storedMessages.add(m);
+        int initialSize = storedMessages.storedMessages.size();
+        
+        sm.deleteByHash("Test Message 2");
 
-        sm.deleteByHash("12:1:TEST");
-
-        assertEquals(0, storedMessages.storedMessages.size());
+        // Confirms that the target stored message was successfully removed
+        assertEquals(initialSize - 1, storedMessages.storedMessages.size());
     }
 
-    // ✅ FULL REPORT
-    @Test
+        @Test
     public void testDisplayFullReport() {
-        Message m = new Message("1", "A", "Hello", "11:1:HELLO");
-        storedMessages.storedMessages.add(m);
-
         sm.displayFullReport();
-        assertEquals(1, storedMessages.storedMessages.size());
+        
+        assertTrue(storedMessages.storedMessages.size() > 0);
     }
 
-    // ✅ DISPLAY SENT MESSAGES
-    @Test
+        @Test
     public void testDisplaySentMessages() {
-        Message m = new Message("1", "Tom", "Hi", "11:1:HI");
-        storedMessages.sentMessages.add(m);
-
         sm.displaySentMessages();
-        assertEquals(1, storedMessages.sentMessages.size());
+        assertEquals(2, storedMessages.sentMessages.size());
+        assertEquals("Did you get the cake?", storedMessages.sentMessages.get(0).getMessageContent());
     }
 
-    // ✅ DISPLAY DISCARDED
+    
     @Test
     public void testDisplayDiscardedMessages() {
-        Message m = new Message("1", "Tom", "Trash", "11:1:TRASH");
-        storedMessages.discardedMessages.add(m);
-
         sm.displayDiscardedMessages();
         assertEquals(1, storedMessages.discardedMessages.size());
+        assertEquals("Yohoooo, I am at your gate.", storedMessages.discardedMessages.get(0).getMessageContent());
     }
 
-    // ✅ DISPLAY COUNTS
+    
     @Test
     public void testDisplayCounts() {
-        storedMessages.storedMessages.add(new Message("1", "A", "Msg", "1:1:MSG"));
-        storedMessages.sentMessages.add(new Message("2", "B", "Msg", "2:2:MSG"));
-
         sm.displayCounts();
-        assertEquals(1, storedMessages.storedMessages.size());
-        assertEquals(1, storedMessages.sentMessages.size());
+        assertEquals(2, storedMessages.storedMessages.size()); 
+        assertEquals(2, storedMessages.sentMessages.size());    
+        assertEquals(1, storedMessages.discardedMessages.size()); 
     }
 
-    // ✅ RECENT SENT MESSAGE
+    
     @Test
     public void testDisplayRecentSentMessages() {
-        Message m1 = new Message("1", "A", "First", "1:1:FIRST");
-        Message m2 = new Message("2", "B", "Second", "2:2:SECOND");
-
-        storedMessages.sentMessages.add(m1);
-        storedMessages.sentMessages.add(m2);
-
         sm.displayRecentSentMessages();
-
-        assertEquals("B", storedMessages.sentMessages.get(1).getRecipient());
+        // Confirms the last sent entry matches Message 4 data attributes
+        assertEquals("0838884567", storedMessages.sentMessages.get(1).getMessageID());
     }
 }
